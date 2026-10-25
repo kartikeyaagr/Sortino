@@ -95,3 +95,16 @@ Open `RL.py` and modify the `config` dictionary inside the `if __name__ == "__ma
 - **Single Stock:** Designed and evaluated for only one specific stock. Performance may vary significantly on other assets or market conditions.
 - **Hyperparameter Sensitivity:** Performance is dependent on the chosen hyperparameters, which may require tuning for different datasets or objectives.
 - **Data Snooping:** While a train/test split was used, the selection of technical indicators and model architecture could implicitly involve some lookahead bias.
+
+## 7. Results
+
+Out-of-sample evaluation on the held-out test period, 15 Jun 2023 to 28 Mar 2025 (442 trading days), starting from a 100,000 balance. Figures are copied from the evaluation table printed by `RL.py` in [`output/out.log`](output/out.log) (lines 279-286).
+
+| Metric | Agent | Buy & Hold |
+|---|---|---|
+| Final portfolio value | 100,031.00 | 108,605.83 |
+| Total return | 0.03% | 8.61% |
+| Sharpe ratio (annualised) | 0.76 | 0.33 |
+| Max drawdown | 0.00% | -27.38% |
+
+The agent ended almost flat with no measurable drawdown; buy-and-hold returned 8.61% but fell 27.38% from its peak. The evaluation script does not compute a Sortino ratio, so none is reported. Plots of the same run are in `output/`.
